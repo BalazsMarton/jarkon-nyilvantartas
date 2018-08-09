@@ -1,0 +1,34 @@
+<!-- TITLE -->
+<div class="toolbar-container">
+	<div class="toolbar">
+		<div class="title-container">
+			<h2><%= @customer["name"] %></h2>
+		</div>
+	</div>
+</div>
+
+<table class="generic-table">
+	<thead style="
+		">
+		<tr>
+		    <th>
+				<div class="generic-table--sort-header-outer">
+					<div class="generic-table--sort-header">
+						license no.
+					</div>
+				</div>
+		    </th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @vehiclelist["_embedded"]["vehicles"].each do |vehicle| %>
+			<% if vehicle["customer_id"] == @customer["id"] %>
+				<tr style="">
+					<td>	
+						<%= vehicle["license_no"] %>
+					</td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

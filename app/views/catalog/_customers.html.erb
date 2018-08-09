@@ -1,0 +1,38 @@
+<table class="generic-table">
+	<thead style="
+		">
+		<tr>
+
+			<th><div class="generic-table--sort-header-outer"><div class="generic-table--sort-header"></div></div>
+    		</th>
+
+			<th>
+				<div class="generic-table--sort-header-outer">
+					<div class="generic-table--sort-header">
+						id
+					</div>
+				</div>
+		    </th>
+
+		    <th>
+				<div class="generic-table--sort-header-outer">
+					<div class="generic-table--sort-header">
+						name
+					</div>
+				</div>
+		    </th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<% @customerlist["_embedded"]["customers"].each do |customer| %>
+			<tr style="">
+				<td></td>
+				<td><%= customer["id"] %></td>
+				<td>
+					<%= link_to customer["name"] ,customer_path(customer["id"]) %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

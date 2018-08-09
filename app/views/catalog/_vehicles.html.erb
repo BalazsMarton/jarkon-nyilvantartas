@@ -1,0 +1,51 @@
+<table class="generic-table">
+	<thead style="
+		">
+		<tr>
+
+			<th><div class="generic-table--sort-header-outer"><div class="generic-table--sort-header"></div></div>
+    		</th>
+
+			<th>
+				<div class="generic-table--sort-header-outer">
+					<div class="generic-table--sort-header">
+						id
+					</div>
+				</div>
+		    </th>
+
+		    <th>
+				<div class="generic-table--sort-header-outer">
+					<div class="generic-table--sort-header">
+						customer
+					</div>
+				</div>
+		    </th>
+
+		    <th>
+				<div class="generic-table--sort-header-outer">
+					<div class="generic-table--sort-header">
+						license no.
+					</div>
+				</div>
+		    </th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<% @vehiclelist["_embedded"]["vehicles"].each do |vehicle| %>
+			<tr style="">
+				<td></td>
+				<td><%= vehicle["id"] %></td>
+				<td>
+					<% @customerlist["_embedded"]["customers"].each do |customer| %>
+						<% if vehicle["customer_id"] == customer["id"] %>
+							<%= link_to customer["name"] ,customer_path(customer["id"]) %>
+						<% end %>
+					<% end %>
+				</td>
+				<td><%= vehicle["license_no"] %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
